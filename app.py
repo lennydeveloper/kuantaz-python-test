@@ -1,4 +1,8 @@
 from flask import Flask
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # modules
 from api.institucion.main import institucion
@@ -10,7 +14,7 @@ from models import db
 
 app = Flask(__name__)
 # config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://kurobnwo:bw0xqio5t6CoPfpftCL9nQ3GbXpUDJxQ@baasu.db.elephantsql.com/kurobnwo'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Blueprints
